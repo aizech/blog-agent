@@ -66,6 +66,33 @@ def save_generation_prompts(session_timestamp: str, hero_variants: list, inline_
     return str(path)
 
 
+def strip_markdown_fences(text: str) -> str:
+    """Strip markdown code fence markers that wrap the entire content.
+
+    LLMs sometimes wrap output in ```markdown ... ``` fences.
+    This function removes those outer fences when present.
+
+    Args:
+        text: Raw markdown text that may be wrapped in fences
+
+    Returns:
+        Clean markdown text without outer fences
+    """
+    text = text.strip()
+
+    # Check for ```markdown or ``` at the start
+    if text.startswith("```markdown"):
+        text = text[len("```markdown"):].strip()
+    elif text.startswith("```"):
+        text = text[3:].strip()
+
+    # Check for ``` at the end
+    if text.endswith("```"):
+        text = text[:-3].strip()
+
+    return text
+
+
 def auto_save_draft(session_timestamp: str, draft: str):
     """Auto-save draft to output/posts/ after generation.
 
@@ -76,9 +103,12 @@ def auto_save_draft(session_timestamp: str, draft: str):
     Returns:
         Path to saved file
     """
+    # Clean the draft from markdown code fences
+    clean_draft = strip_markdown_fences(draft)
+
     filename = f"blog-{session_timestamp}-auto.md"
     path = POSTS_DIR / filename
-    path.write_text(draft, encoding="utf-8")
+    path.write_text(clean_draft, encoding="utf-8")
     return str(path)
 
 # ---- Page config ----
@@ -607,10 +637,11 @@ elif st.session_state.step == "EXPORT":
     if st.session_state.exports is None and st.session_state.draft:
         with st.spinner("Converting formats..."):
             try:
-                exports = workflow.export_post(st.session_state.draft, "md,html,devto,medium")
+                clean_draft = strip_markdown_fences(st.session_state.draft)
+                exports = workflow.export_post(clean_draft, "md,html,devto,medium")
                 st.session_state.exports = exports
             except Exception as e:
-                st.session_state.exports = {"md": st.session_state.draft}
+                st.session_state.exports = {"md": strip_markdown_fences(st.session_state.draft)}
 
     tab_draft, tab_images, tab_export, tab_social, tab_sources = st.tabs(
         ["📝 Draft", "🖼️ Images", "📦 Export", "📱 Social", "🔗 Sources"]
@@ -718,7 +749,7 @@ elif st.session_state.step == "EXPORT":
             ts = st.session_state.session_timestamp or datetime.now().strftime("%Y%m%d_%H%M%S")
 
             # Prepare markdown with embedded images
-            content = st.session_state.draft or ""
+            content = strip_markdown_fences(st.session_state.draft) or ""
 
             # Add hero image at the top if available
             chosen_idx = st.session_state.hero_chosen_idx

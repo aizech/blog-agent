@@ -200,10 +200,20 @@ def generate_hero_image(
                 revised_prompt = getattr(resp.data[0], "revised_prompt", None) or prompt
                 path = _save_image_from_url(image_url, filename)
 
+            # Clean topic for alt text (remove author names, dates, publication names)
+            clean_topic = topic
+            # Remove common patterns like "| by Author Name |", "| Date |", "— Author Name"
+            import re
+            clean_topic = re.sub(r'\s*[\|—-]\s*(by\s+)?[^|]+\|\s*\w+[,\s]+\d{4}\s*\|.*$', '', clean_topic)
+            clean_topic = re.sub(r'\s*[\|—-]\s*\w+[,\s]+\d{4}\s*$', '', clean_topic)
+            clean_topic = re.sub(r'\s*[\|—-]\s*by\s+[^|]+$', '', clean_topic)
+            clean_topic = re.sub(r'\s*[\|—-]\s*[^|]+$', '', clean_topic)
+            clean_topic = clean_topic.strip()
+
             variants.append({
                 "path": path,
                 "url": image_url,
-                "alt_text": f"Hero image for {topic} — variant {i+1}",
+                "alt_text": f"Hero image: {clean_topic}",
                 "prompt_used": revised_prompt,
                 "variant_index": i,
             })
@@ -289,10 +299,19 @@ def generate_inline_image(
 
         _session_state["inline_count"] += 1
 
+        # Clean section context for alt text
+        import re
+        clean_section = section_context
+        clean_section = re.sub(r'\s*[\|—-]\s*(by\s+)?[^|]+\|\s*\w+[,\s]+\d{4}\s*\|.*$', '', clean_section)
+        clean_section = re.sub(r'\s*[\|—-]\s*\w+[,\s]+\d{4}\s*$', '', clean_section)
+        clean_section = re.sub(r'\s*[\|—-]\s*by\s+[^|]+$', '', clean_section)
+        clean_section = re.sub(r'\s*[\|—-]\s*[^|]+$', '', clean_section)
+        clean_section = clean_section.strip()
+
         return {
             "path": path,
             "url": image_url,
-            "alt_text": f"A visual illustration of {section_context}",
+            "alt_text": f"A visual illustration of {clean_section}",
             "prompt_used": revised_prompt,
             "inline_index": _session_state["inline_count"],
         }
