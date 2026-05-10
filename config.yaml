@@ -1,0 +1,21 @@
+active_brand: corpusanalytica
+llm:
+  provider: openai
+  model: gpt-4o-mini
+image:
+  hero:
+    model: gpt-image-2
+    size: 1536x1024
+    quality: high
+    num_variants: 1
+    output_format: png
+  inline:
+    model: gpt-image-2
+    size: 1024x1024
+    quality: high
+    max_per_session: 2
+    output_format: png
+vision:
+  model: gpt-4o
+  detail: auto
+  max_image_size: 2048

@@ -1,0 +1,13 @@
+name: CorpusAnalytica
+style: Minimalist monochrome abstract composition of [SUBJECT], created from connected particles, thin geometric lines, and node networks, forming an intricate wireframe structure. High-contrast black and white palette, soft matte texture, atmospheric negative space, floating dots and blurred spherical elements in foreground and background. Ethereal technological aesthetic, futuristic generative design, delicate mesh topology, depth-of-field blur, cinematic lighting, ultra-detailed point-cloud construction, elegant scientific visualization style, organic + digital fusion, fine grain, soft shadows, modern conceptual art, clean gallery-quality composition.
+tone: particle simulation, neural network aesthetics, procedural geometry, triangulated mesh, parametric design, monochrome sci-fi abstraction, volumetric depth, floating molecular structures, sparse composition, black ink on white background, digital sculpture
+palette:
+  primary: '#1C1917'
+  accent: '#E27E03'
+  background: '#FAF8F5'
+logo_path: https://www.corpusanalytica.com/
+reference_image: https://lab.corpusanalytica.com/public/login_image.png
+validation:
+  enabled: true
+  min_score: 7
+  max_retries: 2

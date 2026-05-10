@@ -1,0 +1,23 @@
+{
+  "skill_name": "technical-blog-writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a technical blog post explaining what database indexing is and why it's important for performance. Make it accessible to developers who are new to databases.",
+      "expected_output": "A well-structured blog post that explains database indexing concepts clearly, with a problem-solution structure, appropriate examples, and accessible language for intermediate developers.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need to write a blog post about REST vs GraphQL for my company's tech blog. Our audience includes both technical and non-technical stakeholders like product managers.",
+      "expected_output": "A balanced comparison of REST and GraphQL that explains the tradeoffs in a way that both developers and non-technical readers can understand, with clear examples and practical guidance.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Create a tutorial about implementing OAuth 2.0 authentication in a web application. Focus on the common pitfalls and best practices.",
+      "expected_output": "A practical tutorial that walks through OAuth 2.0 implementation, highlights common mistakes, and provides actionable best practices with code examples where helpful.",
+      "files": []
+    }
+  ]
+}

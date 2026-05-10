@@ -1,0 +1,12 @@
+agno>=2.6.5
+streamlit>=1.40
+openai>=1.0
+beautifulsoup4
+readability-lxml
+requests
+Pillow
+python-docx
+markdown
+python-dotenv
+PyYAML>=6.0
+streamlit-ace>=0.1.1

@@ -1,0 +1,14 @@
+name: Anthropic
+style: warm editorial illustration, earthy terracotta and ivory tones, humanist and
+  thoughtful, soft shadows, no text
+tone: thoughtful, approachable, safety-focused, research-oriented
+palette:
+  primary: '#CC785C'
+  accent: '#1A1A1A'
+  background: '#FAFAFA'
+logo_path: ''
+reference_image: ''
+validation:
+  enabled: true
+  min_score: 7
+  max_retries: 2

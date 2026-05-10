@@ -1,0 +1,13 @@
+name: OpenAI
+palette:
+  primary: "#000000"
+  accent: "#10A37F"
+  background: "#FFFFFF"
+style: "clean minimal geometric illustration, black and white with emerald green accents, precise lines, modern sans-serif aesthetic, no text"
+tone: "confident, technical, forward-looking, product-focused"
+logo_path: ""
+reference_image: ""
+validation:
+  enabled: true
+  min_score: 7
+  max_retries: 2

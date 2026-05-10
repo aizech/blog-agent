@@ -1,0 +1,53 @@
+# Planning documents
+PLAN*.md
+
+# Output
+output/*
+
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+
+# Build artifacts
+#security-report.json
+*.log
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Streamlit
+.streamlit/secrets*
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# macOS / iCloud duplicate files
+* 2.*
+* 2/
+
+# Remotion video project
+video/
+
+# Editor
+*.swp
+*.swo
+*~
+.idea/
+.vscode/

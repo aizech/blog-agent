@@ -1,0 +1,22 @@
+═══ SOCIAL SNIPPETS ═══
+
+📱 TWITTER/X THREAD
+─────────────────────
+
+{{TWEET_1}}
+
+{{TWEET_2}}
+
+{{TWEET_3}}
+
+
+💼 LINKEDIN POST
+─────────────────
+
+{{LINKEDIN}}
+
+
+📧 NEWSLETTER INTRO
+────────────────────
+
+{{NEWSLETTER}}
